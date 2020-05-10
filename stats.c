@@ -10,9 +10,9 @@
  *****************************************************************************/
 /**
  * @file stats.c 
- * @brief Statistics of array
+ * @brief Statistics of arr
  *
- * It calculates the basic statistics of elements of array.
+ * It calculates the basic statistics of elements of arr.
  *
  * @author Krupal Jivrajani
  * @date 11/5/2020
@@ -41,3 +41,92 @@ void main() {
 }
 
 /* Add other Implementation File Code Here */
+
+void print_statistics(unsigned char mean,unsigned char median,unsigned char minimum,unsigned char maximum)
+{
+	printf("\n\nMean    = %u",mean);
+	printf("\nMedian  = %u",median);
+	printf("\nMinimum = %u",minimum);
+	printf("\nMaximum = %u",maximum);
+}
+void print_array(unsigned char *arr,int length)
+{
+	int loop=0;
+	while(loop<length)
+	{
+		printf("%u ",arr[loop]);
+		loop++;
+	}
+}
+void sort_array(unsigned char *arr,int length)
+{
+	int outerLoop,innerLoop;
+	unsigned char tempValue=0;
+
+	for(outerLoop=0;outerLoop<length-1;outerLoop++)
+		for(innerLoop=(outerLoop+1);innerLoop<length;innerLoop++)
+			if(arr[outerLoop]<arr[innerLoop])
+			{
+				tempValue=arr[outerLoop];
+				arr[outerLoop]=arr[innerLoop];
+				arr[innerLoop]=tempValue;
+			}
+
+
+}
+unsigned char find_median(unsigned char *arr,int length)
+{
+	if(length%2==0)
+	{
+		length=length/2;
+		return ((arr[length-1]+arr[length])/2);
+	}
+}
+unsigned char find_mean(unsigned char *arr,int length)
+{
+	int sum=0;
+	while(length>0)
+	{
+		sum+=*arr;
+		arr++;
+		length--;
+	}
+	return (sum/40);
+}
+
+unsigned char find_maximum(unsigned char *arr,int length)
+{
+        unsigned char max;
+        max=*arr;
+        arr++;
+        length--;
+        while(length>0)
+        {
+                if(max<*arr)
+                {
+                        max=*arr;
+                }
+                arr++;
+                length--;
+        }
+        return max;
+}
+
+
+unsigned char find_minimum(unsigned char *arr,int length)
+{
+	unsigned char min;
+	min=*arr;
+	arr++;
+	length--;
+	while(length>0)
+	{
+		if(min>*arr)
+		{
+			min=*arr;
+		}
+		arr++;
+		length--;
+	}
+	return min;
+}
