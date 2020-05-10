@@ -36,8 +36,25 @@ void main() {
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
   /* Other Variable Declarations Go Here */
+  unsigned char median;
+  
+  unsigned char mean;
+  
+  unsigned char min;
+  
+  unsigned char max;
   /* Statistics and Printing Functions Go Here */
-
+  printf("\n\nArray before sorting:\n");
+  print_array(test,SIZE);
+  sort_array(test,SIZE);
+  mean = find_mean(test,SIZE);
+  median = find_median(test,SIZE);
+  min = find_minimum(test,SIZE);
+  max = find_maximum(test,SIZE);
+                             
+  print_statistics(mean,median,min,max);
+  printf("\n\nSorted: (Descending order)\n");
+  print_array(test,SIZE);
 }
 
 /* Add other Implementation File Code Here */
